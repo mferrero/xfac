@@ -9,7 +9,7 @@ namespace xfac {
 using mgrid = std::vector<std::tuple<double, double, size_t>>;
 
 /// Parameters of the TensorCI algorithm.
-struct TensorCIParamCheby: TensorCI1Param {
+struct TensorCI1ParamCheby: TensorCI1Param {
     bool env=true;  ///< tci with environment
     function<bool(vector<double>)> ccond;       ///< contineous condition ccond(x)=false when x should not be a pivot
 };
@@ -33,19 +33,19 @@ public:
 
     CTensorCheby() = default;
 
-    CTensorCheby(function<T(vector<int>)> f_, vector<mgrid> const& grid_, TensorCIParamCheby par={})
+    CTensorCheby(function<T(vector<int>)> f_, vector<mgrid> const& grid_, TensorCI1ParamCheby par={})
       : TensorCI1<T>{f_, readDims(grid_), add_cheby_env(grid_, par)}
       , xi{make_xi(grid_)}
       , grid{grid_}
       {}
 
-    CTensorCheby(function<T(vector<int>)> f_, int n, mgrid const& grid_, TensorCIParamCheby par={})
+    CTensorCheby(function<T(vector<int>)> f_, int n, mgrid const& grid_, TensorCI1ParamCheby par={})
       : CTensorCheby{f_, vector(n, grid_), par}  {}
 
-    CTensorCheby(function<T(vector<Index>)> f_, vector<mgrid> const& grid_,  TensorCIParamCheby par={})
+    CTensorCheby(function<T(vector<Index>)> f_, vector<mgrid> const& grid_,  TensorCI1ParamCheby par={})
       : CTensorCheby{tensorFun(f_, make_xi(grid_)), grid_, par}  {}
 
-    CTensorCheby(function<T(vector<Index>)> f_, int n, mgrid const& grid_, TensorCIParamCheby par={})
+    CTensorCheby(function<T(vector<Index>)> f_, int n, mgrid const& grid_, TensorCI1ParamCheby par={})
       : CTensorCheby{f_, vector(n, grid_), par}  {}
 
     /// returns the CI formula for xs.
@@ -148,7 +148,7 @@ private:
         return xiv;
     }
 
-    TensorCI1Param add_cheby_env(vector<mgrid> const& grid, TensorCIParamCheby const& par_) const
+    TensorCI1Param add_cheby_env(vector<mgrid> const& grid, TensorCI1ParamCheby const& par_) const
     {
         TensorCI1Param par{par_};
 
