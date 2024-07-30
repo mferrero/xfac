@@ -2,7 +2,7 @@
 
 #include "xfac/tensor/cheby_tensor_ci.h"
 #include "xfac/grid.h"
-#include "../extern/cheby/chebyshev.hpp"
+#include "cheby/chebyshev.hpp"
 
 using namespace std;
 using namespace xfac;

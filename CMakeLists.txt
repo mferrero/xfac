@@ -78,6 +78,7 @@ install(TARGETS xfac armadillo
 )
 
 install(DIRECTORY include/xfac DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+install(DIRECTORY include/cheby DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 install(EXPORT xfacTargets
     FILE xfacTargets.cmake

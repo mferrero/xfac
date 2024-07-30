@@ -2,7 +2,7 @@
 #define CHEBY_TENSOR_CI
 
 #include "xfac/tensor/tensor_ci.h"
-#include "../extern/cheby/chebyshev.hpp"
+#include "cheby/chebyshev.hpp"
 
 namespace xfac {
 
